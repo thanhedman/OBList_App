@@ -1,0 +1,26 @@
+<script type="text/javascript" src="sha512.js"></script>
+<script type="text/javascript" src="forms.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="css/frontpagetest.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="css/my_forms.css" />
+<?php
+if(login_check())
+{
+header('Location: ./index.php');
+}
+
+if(isset($_GET['error'])) { 
+   echo 'Error Logging In!';
+}
+?>
+<div class="heading">
+<h1>Welcome to the mOB-GYN Beta!</h1><br>
+<h2>Please login or register below</h2><br>
+</div>
+<form action="process_login.php" method="post" name="login_form">
+  <label>Email:</label><br> <input type="text" name="email" required/><br />
+   <label>Password:</label><br><input type="password" name="password" id="password" /><br />
+   <div class="button">
+   <input type="submit" value="Login" onclick="formhash(this.form, this.form.password);" />
+   <input type="button" value="Register" onclick="window.location.href ='register.html';" />
+   </div>
+</form>

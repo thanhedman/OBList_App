@@ -1,0 +1,33 @@
+<script type="text/javascript" src="sha512.js"></script>
+<script type="text/javascript" src="forms.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="css/frontpagetest.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="css/my_forms.css" />
+<script type="text/javascript">function pwCheck() {
+    var pass1 = document.getElementById("password").value;
+    var pass2 = document.getElementById("repeatPassword").value;
+    if (pass1 != pass2) {
+        alert("Passwords do not match");
+        return false;
+    }
+    else {
+        return true;
+    }
+
+}
+</script>
+<?php
+if(isset($_GET['error'])) { 
+   echo 'Error Logging In!';
+}
+?>
+<form action="register_user.php" method="post" name="registration_form">
+   <label>Email:</label><br> <input type="text" name="email" required/><br />
+   <label>Choose a Username:</label><br> <input type="text" name="user" required/><br />
+   <label>Password:</label><br> <input type="password" name="password" id="password" required/><br />
+   <label>Re-enter Password:</label><br> <input type="password" name="repeatPassword" id="repeatPassword" required/><br />
+   <label>Security Code:</label><br> <input type="password" name="code" id="code" required/><br />
+   <div class="button">
+   <input type="submit" value="Register" onclick="if(pwCheck()){formhash(this.form, this.form.password);}" />
+   <input type="button" value="Return to Login Screen" onclick="window.location.href ='login.html';" />
+   </div>
+</form>
